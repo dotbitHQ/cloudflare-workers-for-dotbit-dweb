@@ -290,15 +290,9 @@ async function handleRequest (event) {
         resUrl = `${gateway}${url.pathname}${url.search}`
       }
       else if (ipfsArr[0]) {
-        let cid
-        if (isDomainHost(ipfsArr[0])) {
-          cid = ipfsArr[0]
-        }
-        else {
-          cid = ipfsCidHandle(ipfsArr[0])
-          if (!isIpfsCid(cid)) {
-            return fetch(request)
-          }
+        let cid = ipfsCidHandle(ipfsArr[0])
+        if (!isIpfsCid(cid)) {
+          return fetch(request)
         }
 
         let gateway = await gatewaysChecker(Gateways.ipfs, DWeb.ipfs)
