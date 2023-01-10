@@ -15,7 +15,7 @@ const SkynetGatewayCheckerHash = 'AAAKYhYQ1R6PwULeslCcsf5c3TGJdxboe9LUAjX5IPIB3w
 
 const Gateways = {
   ipfs: [
-    `https://gateway.ipfs.io/ipfs/${ IPFSGatewayCheckerHash }`,
+    // `https://gateway.ipfs.io/ipfs/${ IPFSGatewayCheckerHash }`,
     `https://dweb.link/ipfs/${ IPFSGatewayCheckerHash }`,
     `https://ipfs.io/ipfs/${ IPFSGatewayCheckerHash }`,
     `https://ipfs-gateway.cloud/ipfs/${ IPFSGatewayCheckerHash }`,
