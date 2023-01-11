@@ -12,6 +12,7 @@ import isValidDomain from 'is-valid-domain'
 
 const IPFSGatewayCheckerHash = 'bafybeifx7yeb55armcsxwwitkymga5xf53dxiarykms3ygqic223w5sk3m'
 const SkynetGatewayCheckerHash = 'AAAKYhYQ1R6PwULeslCcsf5c3TGJdxboe9LUAjX5IPIB3w'
+const IPFSGateway = 'https://cloudflare-ipfs.com'
 
 const Gateways = {
   ipfs: [
@@ -284,20 +285,14 @@ async function handleRequest (event) {
             return fetch(request)
           }
         }
-
-        let gateway = await gatewaysChecker(Gateways.ipfs, DWeb.ipfs)
-        gateway = gateway.replace(`/ipfs/${IPFSGatewayCheckerHash}`, `/ipns/${cid}`)
-        resUrl = `${gateway}${url.pathname}${url.search}`
+        resUrl = `${IPFSGateway}/ipns/${cid}${url.pathname}${url.search}`
       }
       else if (ipfsArr[0]) {
         let cid = ipfsCidHandle(ipfsArr[0])
         if (!isIpfsCid(cid)) {
           return fetch(request)
         }
-
-        let gateway = await gatewaysChecker(Gateways.ipfs, DWeb.ipfs)
-        gateway = gateway.replace(IPFSGatewayCheckerHash, cid)
-        resUrl = `${gateway}${url.pathname}${url.search}`
+        resUrl = `${IPFSGateway}/ipfs/${cid}${url.pathname}${url.search}`
       }
         // else if (resilioArr[0]) {
         //   resUrl = resilioArr[0]
